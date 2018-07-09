@@ -1,0 +1,19 @@
+
+money4.value.name=§a%d §2dollar §rand §a%d §2cent
+money4.primary.name=§a%d §2dollar
+money4.primary.desc=Money: §a%d §2dollar
+money4.secondary.name=§a%d §2cent
+money4.secondary.desc=Money: §a%d §2cent
+money4.value.desc=Money: §a%d §2dollar §rand §a%d §2cent.
+money4.none.desc=No money.
+money4.value.short.name=§a%d,%s
+money4.not.add=Can not add %d, player %s already has %d.
+
+tile.money4.money_terminal.name=Money Terminal
+tile.money4.vendor.name=Vendor
+
+item.money4.money.name=Money
+item.money4.coint.name=Coint
+item.money4.check.name=Check
+
+commands.money4.usage=/money4 <username> <set/add> <count> or /money4 <username> <get> <count> [zeros] [isFive]
