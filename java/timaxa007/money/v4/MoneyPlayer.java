@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+import net.minecraftforge.common.util.Constants.NBT;
 import timaxa007.money.v4.network.SyncMoneyMessage;
 
 public class MoneyPlayer implements IExtendedEntityProperties {
@@ -17,14 +18,19 @@ public class MoneyPlayer implements IExtendedEntityProperties {
 	@Override
 	public void saveNBTData(NBTTagCompound nbt) {
 		NBTTagCompound tag = new NBTTagCompound();
-		tag.setInteger("money", money);
-		nbt.setTag(ID, tag);
+		if (money != 0)
+			tag.setInteger("money", money);
+		if (!tag.hasNoTags())
+			nbt.setTag(ID, tag);
 	}
 
 	@Override
 	public void loadNBTData(NBTTagCompound nbt) {
-		NBTTagCompound tag = nbt.getCompoundTag(ID);
-		money = tag.getInteger("money");
+		if (nbt.hasKey(ID, NBT.TAG_COMPOUND)) {
+			NBTTagCompound tag = nbt.getCompoundTag(ID);
+			if (tag.hasKey("money", NBT.TAG_INT))
+				money = tag.getInteger("money");
+		}
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package timaxa007.money.v3;
+package timaxa007.money.v5;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,11 +7,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import net.minecraftforge.common.util.Constants.NBT;
-import timaxa007.money.v3.network.SyncMoneyMessage;
+import timaxa007.money.v5.network.SyncMoneyMessage;
 
 public class MoneyPlayer implements IExtendedEntityProperties {
 
-	private static final String ID = "MoneyPlayer.v3";
+	private static final String ID = "MoneyPlayer.v5";
 	private EntityPlayer player;
 	private int money;
 
