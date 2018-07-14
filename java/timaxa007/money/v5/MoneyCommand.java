@@ -27,6 +27,11 @@ public class MoneyCommand extends CommandBase {
 			"bag"
 	};
 
+	private static final String[] e = new String[]{
+			"entityTrader",
+			"villagerTrader"
+	};
+
 	@Override
 	public String getCommandName() {
 		return "money5";
@@ -71,8 +76,8 @@ public class MoneyCommand extends CommandBase {
 
 					if (args[3].equalsIgnoreCase(wnv[3])) {
 						ItemStack item_money = ItemCoin.addNBT(new ItemStack(MoneyMod.item_coin), money);
-							if (!player.inventory.addItemStackToInventory(item_money))
-								player.dropPlayerItemWithRandomChoice(item_money, false);
+						if (!player.inventory.addItemStackToInventory(item_money))
+							player.dropPlayerItemWithRandomChoice(item_money, false);
 						return;
 					}
 
@@ -84,7 +89,7 @@ public class MoneyCommand extends CommandBase {
 							break;
 						}
 					}
-					
+
 					if (zeros == -1) zeros = parseInt(ics, args[3]);
 
 					for (ItemStack item_money : ((ItemCoin)MoneyMod.item_coin).splitMoney(money, zeros))
@@ -97,9 +102,17 @@ public class MoneyCommand extends CommandBase {
 				}
 			}
 			else if (args[1].equalsIgnoreCase(w[3])) {
-				EntityVillager v = new EntityVillager(player.worldObj, 5);
-				v.setPosition(player.posX, player.posY, player.posZ);
-				player.worldObj.spawnEntityInWorld(v);
+				if (args.length < 3) return;
+				if (args[2].equalsIgnoreCase(e[0])) {
+					EntityCoinTrader trader = new EntityCoinTrader(player.worldObj);
+					trader.setPosition(player.posX, player.posY, player.posZ);
+					player.worldObj.spawnEntityInWorld(trader);
+				}
+				if (args[2].equalsIgnoreCase(e[1])) {
+					EntityVillager v = new EntityVillager(player.worldObj, 5);
+					v.setPosition(player.posX, player.posY, player.posZ);
+					player.worldObj.spawnEntityInWorld(v);
+				}
 			}
 		}
 	}
@@ -107,9 +120,18 @@ public class MoneyCommand extends CommandBase {
 	/**Adds the strings available in this command to the given list of tab completion options.**/
 	@Override
 	public List addTabCompletionOptions(ICommandSender ics, String[] args) {
-		return args.length == 1 ? getListOfStringsMatchingLastWord(args, MinecraftServer.getServer().getAllUsernames()) :
-			args.length == 2 ? getListOfStringsMatchingLastWord(args, w) :
-				args.length == 4 && args[1].equalsIgnoreCase(w[2]) ? getListOfStringsMatchingLastWord(args, wnv) : null;
+		switch(args.length) {
+		case 1:return getListOfStringsMatchingLastWord(args, MinecraftServer.getServer().getAllUsernames());
+		case 2:return getListOfStringsMatchingLastWord(args, w);
+		case 3:
+			if (args[1].equalsIgnoreCase(w[3]))
+				return getListOfStringsMatchingLastWord(args, e);
+		case 4:
+			if (args[1].equalsIgnoreCase(w[2]))
+				return getListOfStringsMatchingLastWord(args, wnv);
+			else return null;
+		default:return null;
+		}
 	}
 
 	/**Return whether the specified command parameter index is a username parameter.**/

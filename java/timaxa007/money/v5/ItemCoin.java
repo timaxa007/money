@@ -162,6 +162,9 @@ public class ItemCoin extends Item {
 		list.add(addNBT(new ItemStack(id, 1, 0), 100000));//For test
 		list.add(addNBT(new ItemStack(id, 1, 0), 10101));//For test
 		list.add(addNBT(new ItemStack(id, 1, 0), 10001));//For test
+		list.add(addNBT(new ItemStack(id, 1, 0), 11111));//For test
+		list.add(addNBT(new ItemStack(id, 1, 0), 111111));//For test
+		list.add(addNBT(new ItemStack(id, 1, 0), 1111111));//For test
 		list.add(addNBT(new ItemStack(id, 1, 0), Byte.MAX_VALUE));//For test
 		list.add(addNBT(new ItemStack(id, 1, 0), Short.MAX_VALUE));//For test
 		list.add(addNBT(new ItemStack(id, 1, 0), Integer.MAX_VALUE));//For test

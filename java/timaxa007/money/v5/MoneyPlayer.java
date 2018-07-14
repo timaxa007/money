@@ -6,7 +6,9 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.Constants.NBT;
+import timaxa007.money.v5.event.MoneyEvent;
 import timaxa007.money.v5.network.SyncMoneyMessage;
 
 public class MoneyPlayer implements IExtendedEntityProperties {
@@ -14,6 +16,7 @@ public class MoneyPlayer implements IExtendedEntityProperties {
 	private static final String ID = "MoneyPlayer.v5";
 	private EntityPlayer player;
 	private int money;
+	public EntityCoinTrader entityTrader;
 
 	@Override
 	public void saveNBTData(NBTTagCompound nbt) {
@@ -85,10 +88,26 @@ public class MoneyPlayer implements IExtendedEntityProperties {
 	}
 
 	public void setMoney(int money) {
-		this.money = money;
+		if (this.money != money) {
+
+			MoneyEvent.ChargeMoney.Pre event = new MoneyEvent.ChargeMoney.Pre(player, money);
+
+			//После инстанций эвентов.
+			//Post instance events.
+			MinecraftForge.EVENT_BUS.post(event);
+
+			//Если эвент отменён, то продолжать выполнять код не должен.
+			//If the event is canceled, then continue to execute code should not.
+			if (event.isCanceled()) return;
+
+			this.money = event.newMoney;
+
+			MinecraftForge.EVENT_BUS.post(new MoneyEvent.ChargeMoney.Post(player, this.money));
+		}
+
 		if (player instanceof EntityPlayerMP) {
 			SyncMoneyMessage message = new SyncMoneyMessage();
-			message.money = money;
+			message.money = this.money;
 			MoneyMod.network.sendTo(message, (EntityPlayerMP)player);
 		}
 	}

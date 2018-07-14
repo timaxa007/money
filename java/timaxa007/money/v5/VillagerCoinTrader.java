@@ -9,11 +9,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 
-public class VillagerMoneyTrader implements IVillageTradeHandler {
+public class VillagerCoinTrader implements IVillageTradeHandler {
 
 	@Override
 	public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
-		if (villager.getProfession() != MoneyMod.villagerTraderProfession) return;
+		if (villager.getProfession() != MoneyMod.villagerTraderCoinProfession) return;
 		//recipeList.add(new MerchantRecipe(coin_gold, new ItemStack(Items.stick)));
 		//recipeList.add(new MerchantRecipe(coin_silver, coin_copper, new ItemStack(Items.coal)));
 		
