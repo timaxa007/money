@@ -44,8 +44,8 @@ public class MoneyMod {
 	public void preInit(FMLPreInitializationEvent event) {
 		network.registerMessage(SyncMoneyMessage.Handler.class, SyncMoneyMessage.class, 0, Side.CLIENT);
 		network.registerMessage(SyncMoneyMessage.Handler.class, SyncMoneyMessage.class, 0, Side.SERVER);
-		network.registerMessage(OpenGuiTraderMoneyMessage.Handler.class, OpenGuiTraderMoneyMessage.class, 0, Side.CLIENT);
-		network.registerMessage(OpenGuiTraderMoneyMessage.Handler.class, OpenGuiTraderMoneyMessage.class, 0, Side.SERVER);
+		network.registerMessage(OpenGuiTraderMoneyMessage.Handler.class, OpenGuiTraderMoneyMessage.class, 1, Side.CLIENT);
+		network.registerMessage(OpenGuiTraderMoneyMessage.Handler.class, OpenGuiTraderMoneyMessage.class, 1, Side.SERVER);
 
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 

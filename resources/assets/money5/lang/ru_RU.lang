@@ -1,14 +1,19 @@
 ﻿
 money5.value.name=§eЗолото§r: %d, §7Серебро§r: %d, §6Медь§r: %d.
 money5.value.short.name=§eЗ:§r %d, §7С:§r %d, §6М:§r %d
+money5.copper.short.name=§6Медь§r %d
 money5.copper.name=§6Медь§r: %d.
 money5.copper.desc=Монета §6Медь§r: %d.
+money5.silver.short.name=§7Серебро§r %d
 money5.silver.name=§7Серебро§r: %d.
 money5.silver.desc=Монета §7Серебро§r: %d.
+money5.gold.short.name=§eЗолото§r %d
 money5.gold.name=§eЗолото§r: %d.
 money5.gold.desc=Монета §eЗолото§r: %d.
 money5.none.desc=Нету монет.
 money5.not.add=Не удается добавить %d, у игрока %s уже есть %d.
+money5.add.coins=Добавлено монет %s.
+money5.remove.coins=Удалено монет %s.
 
 item.money5.coin.name=Монета
 item.money5.coin.copper.name=Монета Меднная
@@ -17,4 +22,4 @@ item.money5.coin.gold.name=Монета Золотая
 item.money5.bag_coin.name=Мешочек с Монетами
 item.money5.bag_coin.empty.name=Мешочек пуст
 
-commands.money4.usage=/money5 <username> <set/add> <count> или /money5 <username> <get> <count> [zeros/copper/silver/gold/bag] или /money5 <username> <spawn> <nane>
+commands.money5.usage=/money5 <username> <set/add> <count> или /money5 <username> <get> <count> [zeros/copper/silver/gold/bag] или /money5 <username> <spawn> <name>

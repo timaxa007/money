@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,6 +18,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
 
 public class ItemCoin extends Item {
+	
+	public static final String KEY = "Money";
 
 	@SideOnly(Side.CLIENT)
 	private IIcon
@@ -51,13 +54,13 @@ public class ItemCoin extends Item {
 			int money = 0;
 			if (itemStack.hasTagCompound()) {
 				NBTTagCompound nbt = itemStack.getTagCompound();
-				if (nbt.hasKey("Money", NBT.TAG_BYTE)) money = nbt.getByte("Money");
-				else if (nbt.hasKey("Money", NBT.TAG_SHORT)) money = nbt.getShort("Money");
-				else if (nbt.hasKey("Money", NBT.TAG_INT)) money = nbt.getInteger("Money");
+				if (nbt.hasKey(KEY, NBT.TAG_BYTE)) money = nbt.getByte(KEY);
+				else if (nbt.hasKey(KEY, NBT.TAG_SHORT)) money = nbt.getShort(KEY);
+				else if (nbt.hasKey(KEY, NBT.TAG_INT)) money = nbt.getInteger(KEY);
 			}
 			if (money != 0) {
 				if (moneyPlayer.isAddMoney(money)) {
-					moneyPlayer.addMoney(money);
+					if (player instanceof EntityPlayerMP) moneyPlayer.addMoney(money);
 					if (!player.capabilities.isCreativeMode) {
 						--itemStack.stackSize;
 						ItemStack newMoney = addNBT(new ItemStack(this), 0);
@@ -81,9 +84,9 @@ public class ItemCoin extends Item {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt != null) {
 			int money = 0;
-			if (nbt.hasKey("Money", NBT.TAG_BYTE)) money = nbt.getByte("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_SHORT)) money = nbt.getShort("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_INT)) money = nbt.getInteger("Money");
+			if (nbt.hasKey(KEY, NBT.TAG_BYTE)) money = nbt.getByte(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_SHORT)) money = nbt.getShort(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_INT)) money = nbt.getInteger(KEY);
 			if (money != 0) {
 				if (money == 1)
 					return super.getUnlocalizedName(itemStack) + ".copper";
@@ -102,9 +105,9 @@ public class ItemCoin extends Item {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt != null) {
 			int money = 0;
-			if (nbt.hasKey("Money", NBT.TAG_BYTE)) money = nbt.getByte("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_SHORT)) money = nbt.getShort("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_INT)) money = nbt.getInteger("Money");
+			if (nbt.hasKey(KEY, NBT.TAG_BYTE)) money = nbt.getByte(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_SHORT)) money = nbt.getShort(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_INT)) money = nbt.getInteger(KEY);
 			if (money != 0) {
 				if (money == 1)
 					StatCollector.translateToLocalFormatted("money5.copper.name", new Object[] {money});
@@ -125,9 +128,9 @@ public class ItemCoin extends Item {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt != null) {
 			int money = 0;
-			if (nbt.hasKey("Money", NBT.TAG_BYTE)) money = nbt.getByte("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_SHORT)) money = nbt.getShort("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_INT)) money = nbt.getInteger("Money");
+			if (nbt.hasKey(KEY, NBT.TAG_BYTE)) money = nbt.getByte(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_SHORT)) money = nbt.getShort(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_INT)) money = nbt.getInteger(KEY);
 			if (money != 0) {
 				if (money == 1);
 				//list.add(StatCollector.translateToLocalFormatted("money5.copper.desc", new Object[] {money}));
@@ -172,13 +175,13 @@ public class ItemCoin extends Item {
 
 	public static ItemStack addNBT(ItemStack itemStack, byte money) {
 		if (!itemStack.hasTagCompound()) itemStack.setTagCompound(new NBTTagCompound());
-		itemStack.getTagCompound().setByte("Money", (byte)money);
+		itemStack.getTagCompound().setByte(KEY, (byte)money);
 		return itemStack;
 	}
 
 	public static ItemStack addNBT(ItemStack itemStack, short money) {
 		if (!itemStack.hasTagCompound()) itemStack.setTagCompound(new NBTTagCompound());
-		itemStack.getTagCompound().setShort("Money", (short)money);
+		itemStack.getTagCompound().setShort(KEY, (short)money);
 		return itemStack;
 	}
 
@@ -189,7 +192,7 @@ public class ItemCoin extends Item {
 			return addNBT(itemStack, (short)money);
 		else {
 			if (!itemStack.hasTagCompound()) itemStack.setTagCompound(new NBTTagCompound());
-			itemStack.getTagCompound().setInteger("Money", money);
+			itemStack.getTagCompound().setInteger(KEY, money);
 			return itemStack;
 		}
 	}
@@ -238,9 +241,9 @@ public class ItemCoin extends Item {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt != null) {
 			int money = 0;
-			if (nbt.hasKey("Money", NBT.TAG_BYTE)) money = nbt.getByte("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_SHORT)) money = nbt.getShort("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_INT)) money = nbt.getInteger("Money");
+			if (nbt.hasKey(KEY, NBT.TAG_BYTE)) money = nbt.getByte(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_SHORT)) money = nbt.getShort(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_INT)) money = nbt.getInteger(KEY);
 			if (money != 0) {
 				if (money < 100) return 0xCC5F00;
 				else if (money >= 100 && money < 10000 && money % 100 == 0) return 0xAFAFAF;
@@ -262,9 +265,9 @@ public class ItemCoin extends Item {
 		NBTTagCompound nbt = itemStack.getTagCompound();
 		if (nbt != null) {
 			int money = 0;
-			if (nbt.hasKey("Money", NBT.TAG_BYTE)) money = nbt.getByte("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_SHORT)) money = nbt.getShort("Money");
-			else if (nbt.hasKey("Money", NBT.TAG_INT)) money = nbt.getInteger("Money");
+			if (nbt.hasKey(KEY, NBT.TAG_BYTE)) money = nbt.getByte(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_SHORT)) money = nbt.getShort(KEY);
+			else if (nbt.hasKey(KEY, NBT.TAG_INT)) money = nbt.getInteger(KEY);
 			if (money != 0) {
 				if (money == 1) return icon_coin_copper;
 				else if (money == 100) return icon_coin_silver;

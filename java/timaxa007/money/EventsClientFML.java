@@ -1,4 +1,4 @@
-package timaxa007.money.v5.client;
+package timaxa007.money;
 
 public class EventsClientFML {
 

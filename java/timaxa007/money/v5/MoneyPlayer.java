@@ -72,7 +72,7 @@ public class MoneyPlayer implements IExtendedEntityProperties {
 	}
 
 	public void addMoney(final int money) {
-		setMoney(money + getMoney());
+		setMoney(getMoney() + money);
 	}
 
 	public void addCopper(int copper) {
@@ -88,22 +88,20 @@ public class MoneyPlayer implements IExtendedEntityProperties {
 	}
 
 	public void setMoney(int money) {
-		if (this.money != money) {
 
-			MoneyEvent.ChargeMoney.Pre event = new MoneyEvent.ChargeMoney.Pre(player, money);
+		MoneyEvent.SetMoney.Pre event = new MoneyEvent.SetMoney.Pre(player, money);
 
-			//После инстанций эвентов.
-			//Post instance events.
-			MinecraftForge.EVENT_BUS.post(event);
+		//После инстанций эвентов.
+		//Post instance events.
+		MinecraftForge.EVENT_BUS.post(event);
 
-			//Если эвент отменён, то продолжать выполнять код не должен.
-			//If the event is canceled, then continue to execute code should not.
-			if (event.isCanceled()) return;
+		//Если эвент отменён, то продолжать выполнять код не должен.
+		//If the event is canceled, then continue to execute code should not.
+		if (event.isCanceled()) return;
+		money = this.money;
+		this.money = event.money;
 
-			this.money = event.newMoney;
-
-			MinecraftForge.EVENT_BUS.post(new MoneyEvent.ChargeMoney.Post(player, this.money));
-		}
+		MinecraftForge.EVENT_BUS.post(new MoneyEvent.SetMoney.Post(player, money));
 
 		if (player instanceof EntityPlayerMP) {
 			SyncMoneyMessage message = new SyncMoneyMessage();

@@ -1,14 +1,19 @@
 
 money5.value.name=§eGold§r: %d, §7Silver§r: %d, §6Copper§r: %d.
 money5.value.short.name=§eG:§r %d, §7S:§r %d, §6C:§r %d.
+money5.copper.short.name=§6Copper§r %d
 money5.copper.name=§6Copper§r: %d.
 money5.copper.desc=Coin §6Copper§r: %d.
+money5.silver.short.name=§7Silver§r %d
 money5.silver.name=§7Silver§r: %d.
 money5.silver.desc=Coin §7Silver§r: %d.
+money5.gold.short.name=§eGold§r %d
 money5.gold.name=§eGold§r: %d.
 money5.gold.desc=Coin §eGold§r: %d.
 money5.none.desc=No coins.
 money5.not.add=Can not add %d, player %s already has %d.
+money5.add.coins=Adding coins %s.
+money5.remove.coins=Removing coins %s.
 
 item.money5.coin.name=Coin
 item.money5.coin.copper.name=Coin Copper
@@ -17,4 +22,4 @@ item.money5.coin.gold.name=Coin Gold
 item.money5.bag_coin.name=Bag of Coins
 item.money5.bag_coin.empty.name=Bag empty
 
-commands.money5.usage=/money5 <username> <set/add> <count> or /money5 <username> <get> <count> [zeros/copper/silver/gold/bag] or /money5 <username> <spawn> <nane>
+commands.money5.usage=/money5 <username> <set/add> <count> or /money5 <username> <get> <count> [zeros/copper/silver/gold/bag] or /money5 <username> <spawn> <name>

@@ -13,16 +13,16 @@ public class MoneyEvent extends PlayerEvent {
 		moneyPlayer = MoneyPlayer.get(player);
 	}
 
-	public static class ChargeMoney extends MoneyEvent {
+	public static class SetMoney extends MoneyEvent {
 
-		public int newMoney = -1;
+		public int money = -1;
 
-		public ChargeMoney(EntityPlayer player, int newMoney) {
+		public SetMoney(EntityPlayer player, int money) {
 			super(player);
-			this.newMoney = newMoney;
+			this.money = money;
 		}
 		//----------------------------------------------------------
-		public static class Pre extends ChargeMoney {
+		public static class Pre extends SetMoney {
 
 			public Pre(EntityPlayer player, int newMoney) {
 				super(player, newMoney);
@@ -30,10 +30,10 @@ public class MoneyEvent extends PlayerEvent {
 
 		}
 
-		public static class Post extends ChargeMoney {
+		public static class Post extends SetMoney {
 
-			public Post(EntityPlayer player, int money) {
-				super(player, money);
+			public Post(EntityPlayer player, int oldMoney) {
+				super(player, oldMoney);
 			}
 
 		}
