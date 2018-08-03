@@ -1,0 +1,26 @@
+
+money2b.value.name=§eGold§r: %d, §7Silver§r: %d, §6Copper§r: %d.
+money2b.value.short.name=§eG:§r %d, §7S:§r %d, §6C:§r %d.
+money2b.gold.name=§eGold§r: %d.
+money2b.gold.desc=Coin §eGold§r: %d.
+money2b.silver.name=§7Silver§r: %d.
+money2b.silver.desc=Coin §7Silver§r: %d.
+money2b.copper.name=§6Copper§r: %d.
+money2b.copper.desc=Coin §6Copper§r: %d.
+money2b.none.desc=No coins.
+money2b.not.add=Can not add %d, player %s already has %d.
+
+money2b.gold.short.name=§eGold§r %d
+money2b.silver.short.name=§7Silver§r %d
+money2b.copper.short.name=§6Copper§r %d
+money2b.add.coins=Added coins %s.
+money2b.remove.coins=Removed coins %s.
+
+item.money2b.coin.name=Coin
+item.money2b.coin.copper.name=Coin Copper
+item.money2b.coin.silver.name=Coin Silver
+item.money2b.coin.gold.name=Coin Gold
+item.money2b.bag_coin.name=Bag of Coins
+item.money2b.bag_coin.empty.name=Bag empty
+
+commands.money2b.usage=/money2b <username> <set/add> <count> or /money2b <username> <get> <count> [zeros/copper/silver/gold/bag] or /money2b <username> <spawn> <name>

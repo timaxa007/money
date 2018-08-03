@@ -1,0 +1,4 @@
+
+money1b.value.name=§eGold§r: %d, §7Silver§r: %d, §6Copper§r: %d.
+money1b.value.short.name=§eG:§r %d, §7S:§r %d, §6C:§r %d.
+money1b.not.add=Can not add %d, player %s already has %d.

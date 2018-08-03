@@ -1,0 +1,4 @@
+
+money1a.value.name=§a%d §2dollar §rand §a%s §2cent
+money1a.value.short.name=§a%d,%s
+money1a.not.add=Can not add %d, player %s already has %d.

@@ -11,9 +11,9 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import timaxa007.money.v5.ItemCoin;
-import timaxa007.money.v5.MoneyMod;
-import timaxa007.money.v5.network.SyncMoneyMessage;
+import timaxa007.money.v2b.ItemCoin;
+import timaxa007.money.v2b.MoneyMod;
+import timaxa007.money.v2b.network.SyncMoneyMessage;
 
 public class EventsForge {
 

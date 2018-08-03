@@ -1,4 +1,0 @@
-﻿
-money3.value.name=§eЗолото§r: %d, §7Серебро§r: %d, §6Медь§r: %d.
-money3.value.short.name=§eЗ:§r %d, §7С:§r %d, §6М:§r %d
-money3.not.add=Не удается добавить %d, у игрока %s уже есть %d.

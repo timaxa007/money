@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
-import timaxa007.money.v5.ItemCoin;
+import timaxa007.money.v2b.ItemCoin;
 
 public class EntityItemCoin extends EntityItem {
 

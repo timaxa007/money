@@ -1,0 +1,4 @@
+﻿
+money1a.value.name=§a%d §2рублей §rи §a%s §2копеек
+money1a.value.short.name=§a%d,%s
+money1a.not.add=Не удается добавить %d, у игрока %s уже есть %d.

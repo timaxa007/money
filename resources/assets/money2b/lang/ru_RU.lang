@@ -1,0 +1,26 @@
+﻿
+money2b.value.name=§eЗолото§r: %d, §7Серебро§r: %d, §6Медь§r: %d.
+money2b.value.short.name=§eЗ:§r %d, §7С:§r %d, §6М:§r %d
+money2b.gold.name=§eЗолото§r: %d.
+money2b.gold.desc=Монета §eЗолото§r: %d.
+money2b.silver.name=§7Серебро§r: %d.
+money2b.silver.desc=Монета §7Серебро§r: %d.
+money2b.copper.name=§6Медь§r: %d.
+money2b.copper.desc=Монета §6Медь§r: %d.
+money2b.none.desc=Нету монет.
+money2b.not.add=Не удается добавить %d, у игрока %s уже есть %d.
+
+money2b.gold.short.name=§eЗолотых§r %d
+money2b.silver.short.name=§7Серебреных§r %d
+money2b.copper.short.name=§6Медных§r %d
+money2b.add.coins=Добавлено монет %s.
+money2b.remove.coins=Удалено монет %s.
+
+item.money2b.coin.name=Монета
+item.money2b.coin.copper.name=Монета Меднная
+item.money2b.coin.silver.name=Монета Серебренная
+item.money2b.coin.gold.name=Монета Золотая
+item.money2b.bag_coin.name=Мешочек с Монетами
+item.money2b.bag_coin.empty.name=Мешочек пуст
+
+commands.money2b.usage=/money2b <username> <set/add> <count> или /money2b <username> <get> <count> [zeros/copper/silver/gold/bag] или /money2b <username> <spawn> <name>

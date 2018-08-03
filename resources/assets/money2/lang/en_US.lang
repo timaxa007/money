@@ -1,4 +1,0 @@
-
-money2.value.name=§a%d §2dollar §rand §a%s §2cent
-money2.value.short.name=§a%d,%s
-money2.not.add=Can not add %d, player %s already has %d.

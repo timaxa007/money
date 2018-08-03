@@ -1,0 +1,4 @@
+﻿
+money1b.value.name=§eЗолото§r: %d, §7Серебро§r: %d, §6Медь§r: %d.
+money1b.value.short.name=§eЗ:§r %d, §7С:§r %d, §6М:§r %d
+money1b.not.add=Не удается добавить %d, у игрока %s уже есть %d.

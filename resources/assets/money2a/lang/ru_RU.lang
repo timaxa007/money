@@ -1,0 +1,19 @@
+﻿
+money2a.value.name=§a%d §2рублей(-я) §rи §a%d §2копеек(-а)
+money2a.primary.name=§a%d §2рублей(-я)
+money2a.primary.desc=Денег: §a%d §2рублей(-я)
+money2a.secondary.name=§a%d §2копеек(-а)
+money2a.secondary.desc=Денег: §a%d §2копеек(-а)
+money2a.value.desc=Денег: §a%d §2рублей(-я) §rи §a%d §2копеек(-а).
+money2a.none.desc=Денег нет.
+money2a.value.short.name=§a%d,%s
+money2a.not.add=Не удается добавить %d, у игрока %s уже есть %d.
+
+tile.money2a.money_terminal.name=Терминал Денег
+tile.money2a.vendor.name=Торговый Автомат
+
+item.money2a.money.name=Денеги
+item.money2a.coint.name=Монета
+item.money2a.check.name=Чек
+
+commands.money2a.usage=/money2a <username> <set/add> <count> или /money2a <username> <get> <count> [zeros] [isFive]
