@@ -33,6 +33,7 @@ public class EventsClient {
 		switch(event.type) {
 		case ALL:
 			if (gl == -1 && sl == -1 && cl == -1) return;
+			GL11.glEnable(GL11.GL_BLEND);
 			Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationItemsTexture);
 
 			if (gl != -1) {
@@ -158,6 +159,7 @@ public class EventsClient {
 						offsetY - 5, MoneyMod.item_coin.getIcon(ItemCoin.coin_copper, 0), 16, 16);
 				 */
 			}
+			GL11.glDisable(GL11.GL_BLEND);
 			break;
 		case TEXT:
 			if (gl == -1 && sl == -1 && cl == -1) return;
