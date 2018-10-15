@@ -16,9 +16,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import timaxa007.money.v2b.entity.EntityCoinTrader;
 import timaxa007.money.v2b.event.EventsFML;
 import timaxa007.money.v2b.event.EventsForge;
-import timaxa007.money.v2b.network.OpenGuiTraderMoneyMessage;
+import timaxa007.money.v2b.network.OpenGuiEntityMessage;
+import timaxa007.money.v2b.network.OpenGuiMessage;
+import timaxa007.money.v2b.network.OpenGuiPositionMessage;
 import timaxa007.money.v2b.network.SyncMoneyMessage;
 
 @Mod(modid = MoneyMod.MODID, name = MoneyMod.NAME, version = MoneyMod.VERSION)
@@ -45,10 +48,12 @@ public class MoneyMod {
 	public void preInit(FMLPreInitializationEvent event) {
 		network.registerMessage(SyncMoneyMessage.Handler.class, SyncMoneyMessage.class, 0, Side.CLIENT);
 		network.registerMessage(SyncMoneyMessage.Handler.class, SyncMoneyMessage.class, 0, Side.SERVER);
-		network.registerMessage(OpenGuiTraderMoneyMessage.Handler.class, OpenGuiTraderMoneyMessage.class, 1, Side.CLIENT);
-		network.registerMessage(OpenGuiTraderMoneyMessage.Handler.class, OpenGuiTraderMoneyMessage.class, 1, Side.SERVER);
-
-		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		network.registerMessage(OpenGuiMessage.Handler.class, OpenGuiMessage.class, 1, Side.CLIENT);
+		network.registerMessage(OpenGuiMessage.Handler.class, OpenGuiMessage.class, 1, Side.SERVER);
+		network.registerMessage(OpenGuiEntityMessage.Handler.class, OpenGuiEntityMessage.class, 2, Side.CLIENT);
+		network.registerMessage(OpenGuiEntityMessage.Handler.class, OpenGuiEntityMessage.class, 2, Side.SERVER);
+		network.registerMessage(OpenGuiPositionMessage.Handler.class, OpenGuiPositionMessage.class, 3, Side.CLIENT);
+		network.registerMessage(OpenGuiPositionMessage.Handler.class, OpenGuiPositionMessage.class, 3, Side.SERVER);
 
 		MinecraftForge.EVENT_BUS.register(new EventsForge());
 		FMLCommonHandler.instance().bus().register(new EventsFML());
@@ -56,9 +61,9 @@ public class MoneyMod {
 		item_coin = new ItemCoin().setUnlocalizedName("money2b.coin").setTextureName("money2b:coin").setCreativeTab(CreativeTabs.tabMisc).setHasSubtypes(true).setMaxDamage(0);
 		GameRegistry.registerItem(item_coin, "item_coin");
 
-		ItemCoin.coin_copper = ItemCoin.addNBT(new ItemStack(item_coin), ItemCoin.nominal_values[0]);
-		ItemCoin.coin_silver = ItemCoin.addNBT(new ItemStack(item_coin), ItemCoin.nominal_values[1]);
-		ItemCoin.coin_gold = ItemCoin.addNBT(new ItemStack(item_coin), ItemCoin.nominal_values[2]);
+		ItemCoin.coin_copper = ItemCoin.setMoney(new ItemStack(item_coin), ItemCoin.nominal_values[0]);
+		ItemCoin.coin_silver = ItemCoin.setMoney(new ItemStack(item_coin), ItemCoin.nominal_values[1]);
+		ItemCoin.coin_gold = ItemCoin.setMoney(new ItemStack(item_coin), ItemCoin.nominal_values[2]);
 
 		EntityRegistry.registerModEntity(EntityCoinTrader.class, "EntityCoinTrader", 0, instance, 64, 3, true);
 

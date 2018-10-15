@@ -10,6 +10,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
+import timaxa007.money.v2b.entity.EntityCoinTrader;
 
 public class MoneyCommand extends CommandBase {
 
@@ -75,7 +76,7 @@ public class MoneyCommand extends CommandBase {
 				if (args.length > 3) {
 
 					if (args[3].equalsIgnoreCase(wnv[3])) {
-						ItemStack item_money = ItemCoin.addNBT(new ItemStack(MoneyMod.item_coin), money);
+						ItemStack item_money = ItemCoin.setMoney(new ItemStack(MoneyMod.item_coin), money);
 						if (!player.inventory.addItemStackToInventory(item_money))
 							player.dropPlayerItemWithRandomChoice(item_money, false);
 						return;
@@ -92,11 +93,11 @@ public class MoneyCommand extends CommandBase {
 
 					if (zeros == -1) zeros = parseInt(ics, args[3]);
 
-					for (ItemStack item_money : ((ItemCoin)MoneyMod.item_coin).splitMoney(money, zeros))
+					for (ItemStack item_money : ((ItemCoin)MoneyMod.item_coin).splitItemMoney(money, zeros))
 						if (!player.inventory.addItemStackToInventory(item_money))
 							player.dropPlayerItemWithRandomChoice(item_money, false);
 				} else {
-					for (ItemStack item_money : ((ItemCoin)MoneyMod.item_coin).splitMoney(money))
+					for (ItemStack item_money : ((ItemCoin)MoneyMod.item_coin).splitItemMoney(money))
 						if (!player.inventory.addItemStackToInventory(item_money))
 							player.dropPlayerItemWithRandomChoice(item_money, false);
 				}

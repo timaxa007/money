@@ -102,7 +102,7 @@ public class EventsForge {
 		if (event.entityLiving.dimension != 0) i *= 2;//Не Overworld, то количество монет удваеться
 		i = event.entityLiving.worldObj.rand.nextInt(i);//Рандомное количество монет
 		if (i <= 0) return;
-		for (ItemStack cop : ((ItemCoin)MoneyMod.item_coin).splitMoney(i))
+		for (ItemStack cop : ((ItemCoin)MoneyMod.item_coin).splitItemMoney(i))
 			event.drops.add(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, cop));
 	}
 
@@ -111,13 +111,13 @@ public class EventsForge {
 		if (event.entityLiving.worldObj.isRemote) return;
 		if (event.entityLiving.isChild()) return;//Плохо бить детей ради монет.
 		Entity from = event.source.getSourceOfDamage();//Кто ударил.
-		if (!(from instanceof EntityPlayer)) return;//Не игрок.
+		if (!(from instanceof EntityPlayer)) return;//Кто - не игрок.
 		int i = (int)(event.ammount / 3.5F);
 		if (i <= 0) return;
 		if (event.entityLiving.dimension != 0) i *= 2;//Не Overworld, то количество монет удваеться
 		i = event.entityLiving.worldObj.rand.nextInt(i);//Рандомное количество монет
 		if (i <= 0) return;
-		for (ItemStack cop : ((ItemCoin)MoneyMod.item_coin).splitMoney(i))
+		for (ItemStack cop : ((ItemCoin)MoneyMod.item_coin).splitItemMoney(i))
 			event.entityLiving.worldObj.spawnEntityInWorld(new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, cop));
 	}
 

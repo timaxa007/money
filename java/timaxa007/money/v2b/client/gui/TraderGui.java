@@ -10,7 +10,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
-import timaxa007.money.v2b.EntityCoinTrader;
+import timaxa007.money.v2b.entity.EntityCoinTrader;
 import timaxa007.money.v2b.inventory.TraderContainer;
 
 @SideOnly(Side.CLIENT)

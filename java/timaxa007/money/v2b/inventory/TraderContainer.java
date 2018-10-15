@@ -4,8 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import timaxa007.money.v2b.EntityCoinTrader;
 import timaxa007.money.v2b.MoneyPlayer;
+import timaxa007.money.v2b.entity.EntityCoinTrader;
 
 public class TraderContainer extends Container {
 
@@ -39,8 +39,8 @@ public class TraderContainer extends Container {
 	public boolean canInteractWith(EntityPlayer player) {
 		MoneyPlayer moneyPlayer = MoneyPlayer.get(player);
 		if (moneyPlayer == null) return false;
-		if (moneyPlayer.entityTrader == null) return false;
-		if (moneyPlayer.entityTrader.isDead) return false;
+		if (entity == null) return false;
+		if (entity.isDead) return false;
 		return entity.inventory.isUseableByPlayer(player);
 	}
 
@@ -62,12 +62,9 @@ public class TraderContainer extends Container {
 				return null;
 			}
 
-			if (itemstack1.stackSize == 0) {
+			if (itemstack1.stackSize == 0)
 				slot.putStack((ItemStack)null);
-			}
-			else {
-				slot.onSlotChanged();
-			}
+			else slot.onSlotChanged();
 		}
 
 		return itemstack;
@@ -79,7 +76,6 @@ public class TraderContainer extends Container {
 		entity.inventory.closeInventory();
 		MoneyPlayer moneyPlayer = MoneyPlayer.get(player);
 		if (moneyPlayer == null) return;
-		moneyPlayer.entityTrader = null;
 	}
 
 }

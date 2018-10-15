@@ -17,7 +17,6 @@ public class MoneyPlayer implements IExtendedEntityProperties {
 	//public static final int conversion = 100;
 	private EntityPlayer player;
 	private int money;
-	public EntityCoinTrader entityTrader;
 
 	@Override
 	public void saveNBTData(NBTTagCompound nbt) {

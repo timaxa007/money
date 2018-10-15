@@ -1,4 +1,4 @@
-package timaxa007.money.v2b;
+package timaxa007.money.v2b.entity;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.INpc;
@@ -11,8 +11,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.Constants.NBT;
-import timaxa007.money.v2b.inventory.TraderContainer;
-import timaxa007.money.v2b.network.OpenGuiTraderMoneyMessage;
+import timaxa007.money.v2b.MoneyMod;
 
 public class EntityCoinTrader extends EntityCreature implements INpc {
 
@@ -25,43 +24,25 @@ public class EntityCoinTrader extends EntityCreature implements INpc {
 
 	@Override
 	protected boolean interact(EntityPlayer player) {
-		System.out.println("asdddddddddddddddd - " + this.getEntityId());
-		/*
-		if (worldObj.isRemote) {
-			OpenGuiTraderMoneyMessage message = new OpenGuiTraderMoneyMessage();
-			message.entityID = getEntityId();
-			MoneyMod.network.sendToServer(message);
-		}
-		 */
-		/*
+		//if (worldObj.isRemote) {
 		if (player instanceof EntityPlayerMP) {
-			System.out.println("openContainer");
-			player.openContainer = new TraderContainer(player, this);
-			OpenGuiTraderMoneyMessage message = new OpenGuiTraderMoneyMessage();
-			message.entityID = getEntityId();
-			MoneyMod.network.sendTo(message, (EntityPlayerMP)player);
-			//((EntityPlayerMP)player).sendContainerToPlayer(new TraderContainer(player, this));
-		}
-		 */
-		if (player instanceof EntityPlayerMP) {
-			System.out.println("openContainer");
-
-			MoneyPlayer moneyPlayer = MoneyPlayer.get(player);
-			if (moneyPlayer == null) return true;
-			
-			moneyPlayer.entityTrader = this;
-			OpenGuiTraderMoneyMessage message = new OpenGuiTraderMoneyMessage();
-			message.entityID = getEntityId();
-			MoneyMod.network.sendTo(message, (EntityPlayerMP)player);
-			//((EntityPlayerMP)player).sendContainerToPlayer(new TraderContainer(player, this));
-			player.openGui(MoneyMod.instance, 0, player.worldObj, -1, -1, -1);
+			MoneyMod.proxy.openGui((byte)0, player, this);
 		}
 		return true;
 	}
 
+	@Override
 	public void onDeath(DamageSource damageSource) {
 		super.onDeath(damageSource);
 
+	}
+
+	@Override
+	protected void dropEquipment(boolean p_82160_1_, int p_82160_2_) {
+		for (int i = 0; i < inventory.getSizeInventory(); ++i) {
+			if (inventory.getStackInSlot(i) == null) continue;
+			entityDropItem(inventory.getStackInSlot(i), 0.0F);
+		}
 	}
 
 	@Override
